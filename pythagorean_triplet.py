@@ -6,9 +6,9 @@ def triplets_with_sum(number):
 
     sum_triplets = []
 
-    for triplet in primitives_triplets:
+    for triplet in triplets_in_range(1,int(number**0.5)):
         if sum(triplet) == number:
-            print("T :", triplet)
+
             if triplet not in sum_triplets:
                 sum_triplets.append(triplet)
         elif number % sum(triplet) == 0:
@@ -21,8 +21,8 @@ def triplets_with_sum(number):
     return sum_triplets
 
 def triplets_in_range(start, end):
-    m = 2
-    n = 1
+    m = start + 1
+    n = start
     primitives_triplets = []
     for mm in range(m, end, 1):
         for nn in range(n, mm, 1):
@@ -33,13 +33,8 @@ def triplets_in_range(start, end):
                 b = 2 * mm * nn
                 c = mm ** 2 + nn ** 2
                 somma = a + b + c
-                if sorted([a, b, c]) not in primitives_triplets:
-                    primitives_triplets.append(sorted([a, b, c]))
-            if somma > 2 * end:
-                break
-        if somma > 2 * end:
-            break
-    return primitives_triplets
+                yield sorted([a,b,c])
+
 
 def coprime(m, n):
     if gcd(m, n) == 1:
