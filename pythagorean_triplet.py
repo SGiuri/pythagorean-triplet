@@ -2,9 +2,8 @@ from math import gcd
 
 
 def triplets_with_sum(number):
-    primitives_triplets = triplets_in_range(0,number)
-
     sum_triplets = []
+
 
     for triplet in triplets_in_range(1,int(number**0.5)):
         if sum(triplet) == number:
@@ -21,6 +20,7 @@ def triplets_with_sum(number):
     return sum_triplets
 
 def triplets_in_range(start, end):
+    # generating primitives triple
     m = start + 1
     n = start
     primitives_triplets = []
