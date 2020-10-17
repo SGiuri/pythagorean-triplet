@@ -45,4 +45,3 @@ def coprime(m, n):
     if gcd(m, n) == 1:
         return True
     return False
-
